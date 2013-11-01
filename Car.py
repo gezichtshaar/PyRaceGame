@@ -4,8 +4,9 @@ import math
 TAU = math.pi * 2
 
 class Car(Entity):
-    def __init__(self, game, coords, rot, keys):
+    def __init__(self, game, sprite_name, coords, rot, keys):
         super().__init__("Car", game, coords, [50, 50], rot, True, True, True)
+        self.sprite_name = sprite_name
         self.keys = keys
         self.damage = 0
         self.petrol = 100
@@ -47,4 +48,7 @@ class Car(Entity):
 
         self.coords[0] += self.velocity * math.cos(rot) * dt
         self.coords[1] += self.velocity * math.sin(rot) * dt
+
+    def render(self, graphics_manager):
+        graphics_manager.draw_sprite(self.sprite_name, self.coords[0], self.coords[1], self.rot)
 

@@ -1,4 +1,5 @@
 from Entity import Entity
+from Car import Car
 from Graphics_Manager import Graphics_Manager
 from Content import Content
 from pygame.locals import *
@@ -6,8 +7,8 @@ import pygame, sys
 
 class Race_Game(object):
     def __init__(self):
-        self.graphics_manager = Graphics_Manager()
         self.content = Content()
+        self.graphics_manager = Graphics_Manager(self.content)
         self.running = False
         self.paused = False
         self.FPS = 60
@@ -22,14 +23,12 @@ class Race_Game(object):
                 if event.type == QUIT:
                     pygame.quit()
                     sys.exit()
-            #print(pygame.event.get())
-            self.graphics_manager.update_display()
+            self.graphics_manager.draw_map()
 
-            #~ count += 1
-            #~ if count % 2 == 1:
-                #~ self.graphics_manager.DISPLAY_SURF.fill(self.graphics_manager.WHITE)
-            #~ else:
-                #~ self.graphics_manager.DISPLAY_SURF.fill(self.graphics_manager.BLACK)
-            #~ if count == 2:
-                #~ count = 0
+
+            #~ self.entities.append(Car(self, 'car1', [50, 50], 0, 0))
+            #~ self.entities[0].render(self.graphics_manager)
+
+
+            self.graphics_manager.update_display()
             self.fps_clock.tick(self.FPS)
