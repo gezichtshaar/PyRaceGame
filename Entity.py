@@ -1,5 +1,3 @@
-from Race_Game import Race_Game
-
 class Entity(object):
     def __init__(self, name, game, coords, hitbox, rot, is_visible, is_collidable, is_actor):
         self.name = name
@@ -13,4 +11,3 @@ class Entity(object):
         self.is_collidable = is_collidable
         self.is_actor = is_actor
         self.is_alive = True
-        self.x = "hello, world!!!!"

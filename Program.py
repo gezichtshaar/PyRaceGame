@@ -1,6 +1,4 @@
 from Race_Game import Race_Game
-from Entity import Entity
-from Car import Car
 import pygame
 
 def main():
