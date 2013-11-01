@@ -12,4 +12,3 @@ class Graphics_Manager(object):
 
     def update_display(self):
         pygame.display.update()
-
