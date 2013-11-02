@@ -5,8 +5,7 @@ TAU = math.pi * 2
 
 class Car(Entity):
     def __init__(self, game, sprite_name, coords, rot, keys):
-        super().__init__("Car", game, coords, [50, 50], rot, True, True, True)
-        self.sprite_name = sprite_name
+        super().__init__("Car", game, sprite_name, coords, [50, 50], rot, True, True, True)
         self.keys = keys
         self.damage = 0
         self.petrol = 100
@@ -37,18 +36,20 @@ class Car(Entity):
 
         self.velocity += self.accel * dt # v = a * dt
 
-        self.rot %= TAU
+        self.rot %= TAU # Keep rot lower than 6.28/TAU
         if self.rot < 0:
-            self.rot += TAU
+            self.rot += TAU # Keep rot positive
 
         if self.velocity > -5 and self.velocity < 5 and self.accel == 0:
-            self.velocity = 0
+            self.velocity = 0 # Set velocity to 0 if it is negligibly low.
         else:
-            self.velocity += 0.99
+            # This might need to be reworked to account for dt
+            self.velocity += 0.99 # Emulate "friction" by reducing the speed of the car.
 
         self.coords[0] += self.velocity * math.cos(rot) * dt
         self.coords[1] += self.velocity * math.sin(rot) * dt
 
-    def render(self, graphics_manager):
-        graphics_manager.draw_sprite(self.sprite_name, self.coords[0], self.coords[1], self.rot)
+    def draw(self, graphics_manager):
+        super(Car, self).draw(graphics_manager)
+        #~ graphics_manager.draw_sprite(self.sprite_name, self.coords[0], self.coords[1], self.rot)
 
