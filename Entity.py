@@ -1,7 +1,7 @@
 import abc
 
 class Entity(object):
-    __metaclass__ = abc.ABCMeta # Allows for abstract methods.
+    __metaclass__ = abc.ABCMeta
 
     def __init__(self, name, game, sprite_name, coords, hitbox, rot, is_visible, is_collidable, is_actor):
         self.name = name
@@ -17,8 +17,12 @@ class Entity(object):
         self.is_actor = is_actor
         self.is_alive = True
 
-    @abc.abstractmethod # Makes sure the sub-class render function is called when rendering.
+    @abc.abstractmethod
+    def update():
+        """Updates"""
+
+    @abc.abstractmethod
     def draw(self, graphics_manager):
-        """Renders"""
+        """Draws sprite in Graphics_Manager"""
         graphics_manager.draw_sprite(self.sprite_name, self.coords[0], self.coords[1], self.rot)
 
