@@ -12,7 +12,7 @@ class Race_Game(object):
         self.running = False
         self.paused = False
         self.FPS = 60
-        self.fps_clock = pygame.time.Clock()
+        self.clock = pygame.time.Clock()
         self.entities = []
 
     def run(self):
@@ -26,7 +26,8 @@ class Race_Game(object):
 
 
             self.entities.append(Car(self, 'car1', [50, 50], 0, 0))
+            self.entities[0].update(0, 0)
             self.entities[0].draw(self.graphics_manager)
 
             self.graphics_manager.update_display()
-            self.fps_clock.tick(self.FPS)
+            self.clock.tick(self.FPS)

@@ -46,8 +46,8 @@ class Car(Entity):
             # This might need to be reworked to account for dt
             self.velocity += 0.99 # Emulate "friction" by reducing the speed of the car.
 
-        self.coords[0] += self.velocity * math.cos(rot) * dt
-        self.coords[1] += self.velocity * math.sin(rot) * dt
+        self.coords[0] += self.velocity * math.cos(self.rot) * dt
+        self.coords[1] += self.velocity * math.sin(self.rot) * dt
 
     def draw(self, graphics_manager):
         super(Car, self).draw(graphics_manager)
