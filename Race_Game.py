@@ -28,6 +28,5 @@ class Race_Game(object):
             self.entities.append(Car(self, 'car1', [50, 50], 0, 0))
             self.entities[0].draw(self.graphics_manager)
 
-
             self.graphics_manager.update_display()
             self.fps_clock.tick(self.FPS)
