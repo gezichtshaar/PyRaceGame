@@ -13,7 +13,7 @@ class Car(Entity):
         checkpoints = [False, False, False, False]
 
     def update(self, dt, input_manager):
-        self.rot += 0.1
+        self.rot += 3 * dt
 
         if False: #forward
             self.accel += 100 * dt

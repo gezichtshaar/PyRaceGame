@@ -3,7 +3,7 @@ from Car import Car
 from Graphics_Manager import Graphics_Manager
 from Content import Content
 from pygame.locals import *
-import pygame, sys
+import pygame, sys, math
 
 class Race_Game(object):
     def __init__(self):
@@ -16,8 +16,8 @@ class Race_Game(object):
         self.entities = {}
 
     def init_entities(self):
-        self.entities['car1'] = Car(self, 'car1', [625, 575], 3.14, 0)
-        self.entities['car2'] = Car(self, 'car1', [625, 625], 3.14, 0)
+        self.entities['car1'] = Car(self, 'car1', [625, 575], math.pi, 0)
+        self.entities['car2'] = Car(self, 'car1', [625, 625], math.pi, 0)
 
     def run(self):
         running = True
@@ -31,7 +31,7 @@ class Race_Game(object):
             self.graphics_manager.draw_map()
 
             for entity in self.entities:
-                self.entities[entity].update(0, 0)
+                self.entities[entity].update(self.clock.get_time()/1000, 0)
                 self.entities[entity].draw(self.graphics_manager)
 
             #~ self.entities['car1'].update(0, 0)
