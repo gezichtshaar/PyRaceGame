@@ -1,11 +1,12 @@
 from Entity import Entity
 import math
 
+#
 TAU = math.pi * 2
 
 class Car(Entity):
     def __init__(self, game, sprite_name, coords, rot, keys):
-        super().__init__("Car", game, sprite_name, coords, [50, 50], rot, True, True, True)
+        super().__init__('Car', game, sprite_name, coords, [50, 50], rot, True, True, True)
         self.keys = keys
         self.damage = 0
         self.petrol = 100
@@ -48,8 +49,8 @@ class Car(Entity):
             # This might need to be reworked to account for dt
             self.velocity += 0.99 # Emulate "friction" by reducing the speed of the car.
 
-        self.coords[0] += self.velocity * math.cos(self.rot) * dt
-        self.coords[1] += self.velocity * math.sin(self.rot) * dt
+        self.coords[0] += self.velocity * dt * math.cos(self.rot) # sx = v * dt * cos()
+        self.coords[1] += self.velocity * dt * math.sin(self.rot) # sy = v * dt * sin()
 
     def draw(self, graphics_manager):
         super(Car, self).draw(graphics_manager)

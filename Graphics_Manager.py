@@ -24,7 +24,8 @@ class Graphics_Manager(object):
 
         rotated_sprite = pygame.transform.rotate(self.content.SPRITES[name], math.degrees(rot))
         rect = rotated_sprite.get_rect()
-        self.DISPLAY_SURF.blit(rotated_sprite, (x-(rect.width/2), y-(rect.height/2)))
+        rect.center = (x, y)
+        self.DISPLAY_SURF.blit(rotated_sprite, rect)
 
     def update_display(self):
         pygame.display.update()
