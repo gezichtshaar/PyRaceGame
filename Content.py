@@ -11,7 +11,11 @@ class Content(object):
 
         car1 = pygame.image.load('Content/car1.png')
         car1 = pygame.transform.scale(car1, (80, 48))
-        self.SPRITES = {'car1': car1}
+
+        petrol = pygame.image.load('Content/petrolpowerup.png')
+        petrol = pygame.transform.scale(petrol, (30, 30))
+
+        self.SPRITES = {'car1': car1, 'petrol': petrol}
 
     def load_sound(self):
         """Load all sound files"""

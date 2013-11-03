@@ -10,6 +10,7 @@ class Entity(object):
         self.coords = coords
         self.velocity = 0
         self.accel = 0
+        self.negative_accel = 0
         self.hitbox = hitbox
         self.rot = rot
         self.is_visible = is_visible

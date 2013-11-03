@@ -1,7 +1,6 @@
 from Entity import Entity
 import math
 
-#
 TAU = math.pi * 2
 
 class Car(Entity):
@@ -13,31 +12,36 @@ class Car(Entity):
         checkpoints = [False, False, False, False]
 
     def update(self, dt, input_manager):
-        self.rot += 3 * dt
+        print("accel: {}".format(self.accel))
+        print("velocity: {}".format(self.velocity))
+        print("rot: {}".format(self.rot))
+        print("dt: {}".format(dt))
 
-        if False: #forward
+        self.negative_accel = 0.3 * -self.velocity
+
+        if input_manager.keyboard_state[self.keys[0]]: #forward
             self.accel += 100 * dt
-            if self.accel > 100:
-                self.accel = 100
+            if self.accel > 75:
+                self.accel = 75
 
-        if False: #backward
+        if input_manager.keyboard_state[self.keys[1]]: #backward
             if self.accel > 0:
                 self.accel -= 200 * dt
             elif self.accel <= 0:
                 self.accel -= 10 * dt
-            if self.accel < -75:
-                self.accel = -75
+            if self.accel < -50:
+                self.accel = -50
 
-        if False: #left
+        if input_manager.keyboard_state[self.keys[2]]: #left
             self.rot -= 0.01 * self.velocity * dt
 
-        if False: #right
+        if input_manager.keyboard_state[self.keys[3]]: #right
             self.rot += 0.01 * self.velocity * dt
 
-        if not True and not True: #neither forward nor backward
+        if not input_manager.keyboard_state[self.keys[0]] and not input_manager.keyboard_state[self.keys[1]]: #neither forward nor backward
             self.accel = 0
 
-        self.velocity += self.accel * dt # v = a * dt
+        self.velocity += (self.accel + self.negative_accel) * dt # v = a * dt
 
         self.rot %= TAU # Keep rot lower than 6.28/TAU
         if self.rot < 0:
@@ -47,7 +51,7 @@ class Car(Entity):
             self.velocity = 0 # Set velocity to 0 if it is negligibly low.
         else:
             # This might need to be reworked to account for dt
-            self.velocity += 0.99 # Emulate "friction" by reducing the speed of the car.
+            pass
 
         self.coords[0] += self.velocity * dt * math.cos(self.rot) # sx = v * dt * cos()
         self.coords[1] += self.velocity * dt * math.sin(self.rot) # sy = v * dt * sin()
