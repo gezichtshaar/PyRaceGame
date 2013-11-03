@@ -28,9 +28,9 @@ class Car(Entity):
                 self.accel = 75
 
         if input_manager.keyboard_state[self.keys[1]]: # Backward
-            if self.accel > 0:
-                self.accel -= 200 * dt
-            elif self.accel <= 0:
+            if self.velocity > 0:
+                self.accel -= 400 * dt
+            elif self.velocity <= 0:
                 self.accel -= 10 * dt
             if self.accel < -50:
                 self.accel = -50
