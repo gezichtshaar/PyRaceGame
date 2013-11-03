@@ -1,7 +1,7 @@
 import pygame, sys
 from pygame.locals import *
 
-class Input_Manager(object):
+class InputManager(object):
     def __init__(self):
         self.keyboad_state = pygame.key.get_pressed()
 

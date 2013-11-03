@@ -1,16 +1,16 @@
 from Entity import Entity
 from Car import Car
-from Graphics_Manager import Graphics_Manager
-from Input_Manager import Input_Manager
+from GraphicsManager import GraphicsManager
+from InputManager import InputManager
 from Content import Content
 from Powerup import Powerup
 import pygame, math
 
-class Race_Game(object):
+class RaceGame(object):
     def __init__(self):
         self.content = Content()
-        self.graphics_manager = Graphics_Manager()
-        self.input_manager = Input_Manager()
+        self.graphics_manager = GraphicsManager()
+        self.input_manager = InputManager()
         self.running = False
         self.paused = False
         self.FPS = 30

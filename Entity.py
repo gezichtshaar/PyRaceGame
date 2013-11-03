@@ -24,6 +24,6 @@ class Entity(object):
 
     @abc.abstractmethod
     def draw(self, graphics_manager):
-        """Draws sprite in Graphics_Manager"""
+        """Draws sprite in GraphicsManager"""
         graphics_manager.draw_sprite(self.sprite_name, self.coords[0], self.coords[1], self.rot)
 

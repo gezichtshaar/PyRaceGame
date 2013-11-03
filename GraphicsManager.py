@@ -1,6 +1,6 @@
 import pygame, math
 
-class Graphics_Manager(object):
+class GraphicsManager(object):
     def __init__(self):
         self.DISPLAY_SURF = pygame.display.set_mode((1280, 720))
         pygame.display.set_caption("PyRaceGame")
