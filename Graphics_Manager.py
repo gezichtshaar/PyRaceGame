@@ -21,7 +21,8 @@ class Graphics_Manager(object):
         negative offset equal to half the height and
         length of the sprite.
         """
-        print("degrees: {}".format(math.degrees(rot)))
+
+        #~ print("degrees: {}".format(math.degrees(rot)))
         rotated_sprite = pygame.transform.rotate(self.content.SPRITES[name], 360-math.degrees(rot))
         rect = rotated_sprite.get_rect()
         rect.center = (x, y)

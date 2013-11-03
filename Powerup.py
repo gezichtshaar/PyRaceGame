@@ -2,7 +2,7 @@ from Entity import Entity
 
 class Powerup(Entity):
     def __init__(self, game, sprite_name, coords, category):
-        super().__init__('Powerup', game, sprite_name, coords, [30, 30], 0, True, True, False)
+        super(Powerup, self).__init__('Powerup', game, sprite_name, coords, [30, 30], 0, True, True, False)
         self.category = category
         self.is_active = True
         self.timer = 0
